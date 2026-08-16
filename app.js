@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-require("./utils/init"); // setup uploads folder
 
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/products");
@@ -21,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve uploads as fallback if not using external storage immediately or for validation
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 
 // Router mounting
 app.use("/api/auth", authRoutes);

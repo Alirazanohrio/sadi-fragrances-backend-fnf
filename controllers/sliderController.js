@@ -29,7 +29,7 @@ const createSlide = async (req, res, next) => {
     const uploadedImages = [];
     if (req.files && req.files.length > 0) {
       for (const file of req.files) {
-        const url = await uploadToCloudinary(file.path);
+        const url = await uploadToCloudinary(file);
         uploadedImages.push(url);
       }
     }
@@ -73,7 +73,7 @@ const updateSlide = async (req, res, next) => {
     if (req.files && req.files.length > 0) {
       const newUploadedUrls = [];
       for (const file of req.files) {
-        const url = await uploadToCloudinary(file.path);
+        const url = await uploadToCloudinary(file);
         newUploadedUrls.push(url);
       }
 

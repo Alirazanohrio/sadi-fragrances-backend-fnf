@@ -66,7 +66,7 @@ const createTestBox = async (req, res, next) => {
 
     let mainImageUrl = "";
     if (req.file) {
-      mainImageUrl = await uploadToCloudinary(req.file.path);
+      mainImageUrl = await uploadToCloudinary(req.file);
     } else if (req.body.mainImage) {
       mainImageUrl = req.body.mainImage;
     }
@@ -167,7 +167,7 @@ const updateTestBox = async (req, res, next) => {
       if (testBox.mainImage) {
         await deleteFromCloudinary(testBox.mainImage);
       }
-      const newUrl = await uploadToCloudinary(req.file.path);
+      const newUrl = await uploadToCloudinary(req.file);
       updateData.mainImage = newUrl;
     }
 

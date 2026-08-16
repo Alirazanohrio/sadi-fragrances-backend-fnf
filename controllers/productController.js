@@ -55,7 +55,7 @@ const createProduct = async (req, res, next) => {
     let imageUrls = [];
     if (req.files && req.files.length > 0) {
       for (const file of req.files) {
-        const url = await uploadToCloudinary(file.path);
+        const url = await uploadToCloudinary(file);
         imageUrls.push(url);
       }
     }
@@ -135,7 +135,7 @@ const updateProduct = async (req, res, next) => {
     if (req.files && req.files.length > 0) {
       const newUrls = [];
       for (const file of req.files) {
-        const url = await uploadToCloudinary(file.path);
+        const url = await uploadToCloudinary(file);
         newUrls.push(url);
       }
       // If we replace fully or append:
